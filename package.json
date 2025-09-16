@@ -1,0 +1,30 @@
+{
+  "name": "arbi-mev-univ3-starter",
+  "version": "0.3.1",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "searcher": "ts-node src/searcher/index.ts",
+    "dashboard": "ts-node src/dashboard/server.ts",
+    "watcher": "ts-node src/searcher/run_watcher.ts",
+    "bot:test": "ts-node --transpile-only scripts/test-profitable.ts test",
+    "bot:monitor": "ts-node --transpile-only scripts/test-profitable.ts monitor",
+    "bot:validate": "ts-node --transpile-only scripts/test-profitable.ts validate",
+    "check:chain": "ts-node scripts/check-chain.ts",
+    "check:balances": "ts-node scripts/check-balances.ts",
+    "ws:pending": "ts-node scripts/ws-pending.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

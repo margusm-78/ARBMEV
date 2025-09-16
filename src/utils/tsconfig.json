@@ -1,0 +1,18 @@
+import 'dotenv/config';
+import { ethers } from 'ethers';
+
+export function makeProvider(): ethers.Provider {
+  const local = process.env.ANVIL_URL;
+  if (local) {
+    return new ethers.JsonRpcProvider(
+      local,
+      { name: 'arbitrum', chainId: 42161 }  // force Arbitrum One in dev
+    );
+  }
+  const url = process.env.ARB_RPC_URL || process.env.ARB_RPC_URL_BACKUP;
+  if (!url) throw new Error('Set ARB_RPC_URL or ANVIL_URL');
+  return new ethers.JsonRpcProvider(
+    url,
+    { name: 'arbitrum', chainId: 42161 }    // force Arbitrum One in prod too
+  );
+}
